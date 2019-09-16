@@ -1,9 +1,10 @@
 let gameAreaCoords = {};
 const obstacles = [];
+let canDrawMouseMove = false;
 const draw = () => {
   gameAreaCoords = drawGameArea(ctx, canvas.width, canvas.height, true, gridSize);
 
-  obstacles.push(new Obstacles(ctx, gameAreaCoords, 0, 0));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
   obstacles[0].draw();
 };
 
@@ -23,7 +24,7 @@ var wUnit = 0,
   hUnit = 0;
 
 //* Get canvas element
-let gridSize = 10;
+let gridSize = 5;
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 canvas.height = window.innerHeight;

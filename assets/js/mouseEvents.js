@@ -11,12 +11,20 @@ canvas.addEventListener("mousemove", e => {
     //* Detect mouse colision
     let isInObstacle = obstacles.some(obstacle => obstacle.mouseIsIn(e.clientX, e.clientY));
     console.log(isInObstacle);
-    if (!isInObstacle) {
+    if (!isInObstacle && canDrawMouseMove) {
       drawLine(ctx, mouseX, mouseY, e.clientX, e.clientY);
+    }
+    if (end.isMouseHere(e.clientX, e.clientY)) {
+      canDrawMouseMove = false;
     }
   }
   mouseX = e.clientX;
   mouseY = e.clientY;
+});
+canvas.addEventListener("mouseup", e => {
+  if (start.isMouseHere(e.clientX, e.clientY)) {
+    canDrawMouseMove = true;
+  }
 });
 const drawLine = (ctx, x1, y1, x2, y2) => {
   ctx.beginPath();

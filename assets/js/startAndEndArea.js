@@ -20,6 +20,11 @@ class StartArea {
       }
     }
   };
+  isMouseHere = (mouseX, mouseY) =>
+    mouseX > this.gameArea.w0 + this.wPos * this.gameArea.wUnit &&
+    mouseX < this.gameArea.w0 + this.wPos * this.gameArea.wUnit + this.gameArea.wUnit &&
+    mouseY > this.gameArea.h0 + this.hPos * this.gameArea.hUnit &&
+    mouseY < this.gameArea.h0 + this.hPos * this.gameArea.hUnit + this.gameArea.hUnit;
 }
 class EndArea {
   constructor(context, gameArea, hPos, wPos = 0) {
@@ -46,4 +51,9 @@ class EndArea {
       }
     }
   };
+  isMouseHere = (mouseX, mouseY) =>
+    mouseX > this.gameArea.w0 + this.wPos * this.gameArea.wUnit &&
+    mouseX < this.gameArea.w0 + this.wPos * this.gameArea.wUnit + this.gameArea.wUnit &&
+    mouseY > this.gameArea.h0 + this.hPos * this.gameArea.hUnit &&
+    mouseY < this.gameArea.h0 + this.hPos * this.gameArea.hUnit + this.gameArea.hUnit;
 }
