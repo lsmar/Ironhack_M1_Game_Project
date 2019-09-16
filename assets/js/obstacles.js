@@ -15,10 +15,11 @@ class Obstacles {
     this.h0 = this.gameArea.h0 + this.gameArea.hUnit * this.hPos;
     this.context = context;
     this.colors = ["#ff3400", "#ff0034", "#3400ff", "#220033", "#456633"];
+    this.color = this.randomColor(this.colors);
   }
   draw = () => {
     if (this.canDraw) {
-      this.context.fillStyle = this.randomColor(this.colors);
+      this.context.fillStyle = this.color;
       this.context.fillRect(this.w0, this.h0, this.gameArea.wUnit, this.gameArea.hUnit);
     }
   };

@@ -5,7 +5,11 @@ const draw = () => {
   gameAreaCoords = drawGameArea(ctx, canvas.width, canvas.height, true, gridSize);
 
   obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
-  obstacles[0].draw();
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.forEach(obstacle => {
+    obstacle.draw();
+  });
 };
 
 //* Make canvas responsive

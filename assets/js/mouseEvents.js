@@ -16,14 +16,20 @@ canvas.addEventListener("mousemove", e => {
     }
     if (end.isMouseHere(e.clientX, e.clientY)) {
       canDrawMouseMove = false;
+      obstacles.forEach(obstacle => {
+        obstacle.setCanDraw(true);
+      });
+      redraw();
     }
   }
   mouseX = e.clientX;
   mouseY = e.clientY;
 });
+let mouseMove;
 canvas.addEventListener("mouseup", e => {
   if (start.isMouseHere(e.clientX, e.clientY)) {
     canDrawMouseMove = true;
+    mouseMove = new MouseHistory(ctx, e.clientX, e.clientY);
     obstacles.forEach(obstacle => {
       obstacle.setCanDraw(false);
     });
@@ -32,6 +38,8 @@ canvas.addEventListener("mouseup", e => {
 });
 const drawLine = (ctx, x1, y1, x2, y2) => {
   ctx.beginPath();
+  mouseMove.addPosToHistory(x2, y2);
+  console.log(mouseMove.history);
   var grd = ctx.createLinearGradient(gameAreaCoords.w0, gameAreaCoords.h0, gameAreaCoords.w0 + gameAreaCoords.wMax, gameAreaCoords.h0);
   grd.addColorStop(0, "red");
   grd.addColorStop(1, "green");
