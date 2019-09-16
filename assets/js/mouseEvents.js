@@ -8,7 +8,12 @@ canvas.addEventListener("mousemove", e => {
     e.clientX < gameAreaCoords.w0 + gameAreaCoords.wMax &&
     e.clientY < gameAreaCoords.h0 + gameAreaCoords.hMax
   ) {
-    drawLine(ctx, mouseX, mouseY, e.clientX, e.clientY);
+    //* Detect mouse colision
+    let isInObstacle = obstacles.some(obstacle => obstacle.mouseIsIn(e.clientX, e.clientY));
+    console.log(isInObstacle);
+    if (!isInObstacle) {
+      drawLine(ctx, mouseX, mouseY, e.clientX, e.clientY);
+    }
   }
   mouseX = e.clientX;
   mouseY = e.clientY;
@@ -22,7 +27,7 @@ const drawLine = (ctx, x1, y1, x2, y2) => {
   // grd.addColorStop(0, "#ef4b4b");
   // grd.addColorStop(1, "#ec8f6a");
   ctx.strokeStyle = grd;
-  ctx.lineWidth = 5;
+  ctx.lineWidth = wUnit / 20;
   ctx.moveTo(x1, y1);
   ctx.lineTo(x2, y2);
   ctx.stroke();

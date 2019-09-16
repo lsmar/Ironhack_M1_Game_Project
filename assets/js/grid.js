@@ -15,7 +15,7 @@ const drawGameArea = (context, w, h, gridOn = false, gridSize = 10) => {
     hInit = (h * 0.94 - hUnit * gridSize) / 2 + h * 0.03;
     wInit = w * 0.3;
   }
-  ctx.lineWidth = 5;
+  ctx.lineWidth = wUnit / 20;
   ctx.strokeStyle = "red";
   ctx.strokeRect(wInit, hInit, wUnit * gridSize, hUnit * gridSize);
   if (gridOn) {
@@ -34,5 +34,13 @@ const drawGameArea = (context, w, h, gridOn = false, gridSize = 10) => {
       context.stroke();
     }
   }
-  return { w0: wInit, h0: hInit, wMax: wUnit * gridSize, hMax: hUnit * gridSize };
+  return {
+    w0: wInit,
+    h0: hInit,
+    wMax: wUnit * gridSize,
+    hMax: hUnit * gridSize,
+    gridSize: gridSize,
+    wUnit: wUnit,
+    hUnit: hUnit
+  };
 };
