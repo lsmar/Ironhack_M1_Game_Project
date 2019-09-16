@@ -35,3 +35,14 @@ const end = new EndArea(ctx, gameAreaCoords, 3);
 end.draw();
 const start = new StartArea(ctx, gameAreaCoords, 3);
 start.draw();
+
+const redraw = () => {
+  console.log("Redraw called");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  gameAreaCoords = drawGameArea(ctx, canvas.width, canvas.height, true, gridSize);
+  obstacles.forEach(obstacle => {
+    obstacle.draw();
+  });
+  start.draw();
+  end.draw();
+};

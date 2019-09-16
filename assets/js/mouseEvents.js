@@ -24,6 +24,10 @@ canvas.addEventListener("mousemove", e => {
 canvas.addEventListener("mouseup", e => {
   if (start.isMouseHere(e.clientX, e.clientY)) {
     canDrawMouseMove = true;
+    obstacles.forEach(obstacle => {
+      obstacle.setCanDraw(false);
+    });
+    redraw();
   }
 });
 const drawLine = (ctx, x1, y1, x2, y2) => {
