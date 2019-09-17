@@ -2,14 +2,12 @@ const drawGameArea = (context, w, h, gridOn = false, gridSize = 10) => {
   let hInit, wInit, wUnit, hUnit;
   if (w * 0.67 > h * 0.94) {
     //* the game area will be limited by heigth
-    console.log("limited by heigth");
     wUnit = (h * 0.94) / gridSize;
     hUnit = wUnit;
     hInit = h * 0.03;
     wInit = (w * 0.7 - hUnit * gridSize) / 2 + w * 0.3;
   } else {
     //* the game area will be limited by width
-    console.log("limited by width");
     wUnit = (w * 0.67) / gridSize;
     hUnit = wUnit;
     hInit = (h * 0.94 - hUnit * gridSize) / 2 + h * 0.03;

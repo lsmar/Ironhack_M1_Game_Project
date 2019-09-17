@@ -10,16 +10,22 @@ canvas.addEventListener("mousemove", e => {
   ) {
     //* Detect mouse colision
     let isInObstacle = obstacles.some(obstacle => obstacle.mouseIsIn(e.clientX, e.clientY));
-    console.log(isInObstacle);
-    if (!isInObstacle && canDrawMouseMove) {
-      drawLine(ctx, mouseX, mouseY, e.clientX, e.clientY);
-    }
-    if (end.isMouseHere(e.clientX, e.clientY)) {
-      canDrawMouseMove = false;
-      obstacles.forEach(obstacle => {
-        obstacle.setCanDraw(true);
-      });
-      redraw();
+    if (canDrawMouseMove) {
+      if (!isInObstacle) {
+        mouseMove.addPosToHistory(e.clientX, e.clientY);
+        mouseMove.drawLine(mouseX, mouseY, e.clientX, e.clientY);
+      }
+      if (end.isMouseHere(e.clientX, e.clientY) || isInObstacle) {
+        canDrawMouseMove = false;
+        obstacles.forEach(obstacle => {
+          obstacle.setCanDraw(true);
+        });
+        redraw();
+        mouseMove.drawLineHistory();
+        if (isInObstacle) {
+          console.log("GameOver");
+        } else console.log("You pass this level");
+      }
     }
   }
   mouseX = e.clientX;
@@ -36,20 +42,3 @@ canvas.addEventListener("mouseup", e => {
     redraw();
   }
 });
-const drawLine = (ctx, x1, y1, x2, y2) => {
-  ctx.beginPath();
-  mouseMove.addPosToHistory(x2, y2);
-  console.log(mouseMove.history);
-  var grd = ctx.createLinearGradient(gameAreaCoords.w0, gameAreaCoords.h0, gameAreaCoords.w0 + gameAreaCoords.wMax, gameAreaCoords.h0);
-  grd.addColorStop(0, "red");
-  grd.addColorStop(1, "green");
-  // var grd = ctx.createRadialGradient(50, 50, 5, 50, 50, 100);
-  // grd.addColorStop(0, "#ef4b4b");
-  // grd.addColorStop(1, "#ec8f6a");
-  ctx.strokeStyle = grd;
-  ctx.lineWidth = wUnit / 20;
-  ctx.moveTo(x1, y1);
-  ctx.lineTo(x2, y2);
-  ctx.stroke();
-  ctx.closePath();
-};

@@ -41,7 +41,7 @@ const start = new StartArea(ctx, gameAreaCoords, 3);
 start.draw();
 
 const redraw = () => {
-  console.log("Redraw called");
+  // console.log("Redraw called");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   gameAreaCoords = drawGameArea(ctx, canvas.width, canvas.height, true, gridSize);
   obstacles.forEach(obstacle => {
