@@ -1,44 +1,54 @@
-const drawGameArea = (context, w, h, gridOn = false, gridSize = 10) => {
-  let hInit, wInit, wUnit, hUnit;
-  if (w * 0.67 > h * 0.94) {
-    //* the game area will be limited by heigth
-    wUnit = (h * 0.94) / gridSize;
-    hUnit = wUnit;
-    hInit = h * 0.03;
-    wInit = (w * 0.7 - hUnit * gridSize) / 2 + w * 0.3;
-  } else {
-    //* the game area will be limited by width
-    wUnit = (w * 0.67) / gridSize;
-    hUnit = wUnit;
-    hInit = (h * 0.94 - hUnit * gridSize) / 2 + h * 0.03;
-    wInit = w * 0.3;
+class Grid {
+  constructor(context, width, heigth, gridSize = 10) {
+    this.ctx = context;
+    this.width = width;
+    this.heigth = heigth;
+    this.gridSize = gridSize;
   }
-  ctx.lineWidth = wUnit / 20;
-  ctx.strokeStyle = "red";
-  ctx.strokeRect(wInit, hInit, wUnit * gridSize, hUnit * gridSize);
-  if (gridOn) {
-    //* Vertical grid lines
-    for (let idx = 1; idx < gridSize; idx += 1) {
-      context.beginPath();
-      context.moveTo(wInit + wUnit * idx, hInit);
-      context.lineTo(wInit + wUnit * idx, hInit + hUnit * gridSize);
-      context.stroke();
+  calcGameArea = () => {
+    let hInit, wInit, wUnit, hUnit;
+    if (this.width * 0.67 > this.heigth * 0.94) {
+      //* the game area will be limited by heigth
+      wUnit = (this.heigth * 0.94) / this.gridSize;
+      hUnit = wUnit;
+      hInit = this.heigth * 0.03;
+      wInit = (this.width * 0.7 - hUnit * this.gridSize) / 2 + this.width * 0.3;
+    } else {
+      //* the game area will be limited by width
+      wUnit = (this.width * 0.67) / this.gridSize;
+      hUnit = wUnit;
+      hInit = (this.heigth * 0.94 - hUnit * this.gridSize) / 2 + this.heigth * 0.03;
+      wInit = this.width * 0.3;
     }
-    //* Horizontal grid lines
-    for (let idx = 1; idx < gridSize; idx += 1) {
-      context.beginPath();
-      context.moveTo(wInit, hInit + hUnit * idx);
-      context.lineTo(wInit + wUnit * gridSize, hInit + hUnit * idx);
-      context.stroke();
-    }
-  }
-  return {
-    w0: wInit,
-    h0: hInit,
-    wMax: wUnit * gridSize,
-    hMax: hUnit * gridSize,
-    gridSize: gridSize,
-    wUnit: wUnit,
-    hUnit: hUnit
+    return {
+      w0: wInit,
+      h0: hInit,
+      wMax: wUnit * this.gridSize,
+      hMax: hUnit * this.gridSize,
+      gridSize: this.gridSize,
+      wUnit: wUnit,
+      hUnit: hUnit
+    };
   };
-};
+  drawGameArea = (gameArea, gridOn) => {
+    this.ctx.lineWidth = gameArea.wUnit / 20;
+    this.ctx.strokeStyle = "red";
+    this.ctx.strokeRect(gameArea.w0, gameArea.h0, gameArea.wMax, gameArea.hMax);
+    if (gridOn) {
+      //* Vertical grid lines
+      for (let idx = 1; idx < this.gridSize; idx += 1) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(gameArea.w0 + gameArea.wUnit * idx, gameArea.h0);
+        this.ctx.lineTo(gameArea.w0 + gameArea.wUnit * idx, gameArea.h0 + gameArea.hMax);
+        this.ctx.stroke();
+      }
+      //* Horizontal grid lines
+      for (let idx = 1; idx < this.gridSize; idx += 1) {
+        this.ctx.beginPath();
+        this.ctx.moveTo(gameArea.w0, gameArea.h0 + gameArea.hUnit * idx);
+        this.ctx.lineTo(gameArea.w0 + gameArea.wMax, gameArea.h0 + gameArea.hUnit * idx);
+        this.ctx.stroke();
+      }
+    }
+  };
+}

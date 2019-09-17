@@ -1,5 +1,5 @@
 class StartArea {
-  constructor(context, gameArea, hPos, wPos = 0) {
+  constructor(context, gameArea, wPos = 0, hPos = 0) {
     this.gameArea = gameArea;
     this.ctx = context;
     this.hPos = hPos;
@@ -27,7 +27,7 @@ class StartArea {
     mouseY < this.gameArea.h0 + this.hPos * this.gameArea.hUnit + this.gameArea.hUnit;
 }
 class EndArea {
-  constructor(context, gameArea, hPos, wPos = 0) {
+  constructor(context, gameArea, wPos, hPos) {
     this.gameArea = gameArea;
     this.ctx = context;
     this.hPos = hPos;

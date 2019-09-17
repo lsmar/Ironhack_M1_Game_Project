@@ -1,6 +1,6 @@
 //* { w0: wInit, h0: hInit, wMax: wUnit * gridSize, hMax: hUnit * gridSize, gridSize: gridSize }
 class Obstacles {
-  constructor(context, gameArea, wPos = 0, hPos = 0, canDraw = true) {
+  constructor(gameArea, wPos = 0, hPos = 0, canDraw = true) {
     this.gameArea = gameArea;
     this.wPos = wPos;
     this.hPos = hPos;
@@ -13,14 +13,14 @@ class Obstacles {
     }
     this.w0 = this.gameArea.w0 + this.gameArea.wUnit * this.wPos;
     this.h0 = this.gameArea.h0 + this.gameArea.hUnit * this.hPos;
-    this.context = context;
+    // this.context = context;
     this.colors = ["#ff3400", "#ff0034", "#3400ff", "#220033", "#456633"];
     this.color = this.randomColor(this.colors);
   }
-  draw = () => {
+  draw = context => {
     if (this.canDraw) {
-      this.context.fillStyle = this.color;
-      this.context.fillRect(this.w0, this.h0, this.gameArea.wUnit, this.gameArea.hUnit);
+      context.fillStyle = this.color;
+      context.fillRect(this.w0, this.h0, this.gameArea.wUnit, this.gameArea.hUnit);
     }
   };
   setCanDraw = can => {

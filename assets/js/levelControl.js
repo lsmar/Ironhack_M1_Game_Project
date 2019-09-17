@@ -1,36 +1,48 @@
 class LevelControl {
-  constructor(levelDifficulty, corretPath, start, end, gridSize, amountOfObstacles, points) {
+  constructor(levelDifficulty, correctPath, start, end, gridSize, amountOfObstacles, points) {
     this.levelDifficulty = levelDifficulty;
-    this.corretPath = corretPath;
+    this.correctPath = correctPath;
     this.start = start;
     this.end = end;
+    // this.startInstance;
+    // this.endInstance = new StartArea();
     this.gridSize = gridSize;
     this.amountOfObstacles = amountOfObstacles;
     this.points = points;
-    this.possibleObstaclesPositions = [];
+    this.obstaclesPositions = this.randomizeObstclesPosAndCreate();
+    this.obstacles = [];
   }
-  sortObstcles=()=>{
-    for(let row=0;row<this.gridSize;row+=1){
-      // let colArr = [];
-      for(let col=0;col<this.gridSize;col+=1){
-        // calArr.push([row,col])
-        this.possibleObstaclesPositions.push([row,col]);
+  randomizeObstclesPosAndCreate = () => {
+    let freePosGrid = [];
+    for (let row = 0; row < this.gridSize; row += 1) {
+      for (let col = 0; col < this.gridSize; col += 1) {
+        freePosGrid.push([row, col]);
       }
-      // this.possibleObstaclesPositions.push(calArr);
     }
-    console.log(this.possibleObstaclesPositions)
-  }
+    const result = [];
+    freePosGrid = freePosGrid.filter(el => !this.correctPath.some(item => item[0] === el[0] && item[1] === el[1]));
+    for (let idx = 0; result.length < this.amountOfObstacles; idx += 1) {
+      const getIndex = this.randomIndex(freePosGrid.length);
+      result.push(freePosGrid.splice(getIndex, 1));
+    }
+    return result;
+    // console.log(this.obstaclesPositions);
+  };
+  createObstacles = gameArea => {
+    this.obstaclesPositions.forEach(obstacle => {
+      this.obstacles.push(new Obstacles(gameArea, obstacle[0][0], obstacle[0][1]));
+    });
+  };
+  randomIndex = len => Math.floor(Math.random() * len);
 }
-const levelExample={
-  levelDifficulty:"Easy",
-  gridSize:5,
-  start:[0,2],
-  end:[4,4],
-  corretPath:[[0,2],[0,1],[1,1],[1,2],[1,3],[1,4],[2,4],[3,4],[4,4]],
-  amountOfObstacles:10,
-  points:{
-    difficulty = 5;
-    time: [{time:1000,points: 15},{time:2000,points: 5},{time:Infinity,points: 0}],
-    gridOn: -5,
-    gridOff: 20 }
-  }
+
+// var levelTest = new LevelControl(
+//   levelExample.levelDifficulty,
+//   levelExample.correctPath,
+//   levelExample.start,
+//   levelExample.end,
+//   levelExample.gridSize,
+//   levelExample.amountOfObstacles,
+//   levelExample.points
+// );
+// console.log(levelTest.obstaclesPositions);
