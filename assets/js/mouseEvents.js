@@ -22,9 +22,14 @@ canvas.addEventListener("mousemove", e => {
         });
         redraw();
         mouseMove.drawLineHistory();
+        var endTime = Date.now();
         if (isInObstacle) {
           console.log("GameOver");
-        } else console.log("You pass this level");
+          console.log(endTime - mouseMove.startTime);
+        } else {
+          console.log("You pass this level");
+          console.log(endTime - mouseMove.startTime);
+        }
       }
     }
   }

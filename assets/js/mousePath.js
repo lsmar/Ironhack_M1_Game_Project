@@ -5,6 +5,8 @@ class MouseHistory {
     this.y0 = y0;
     this.history = [];
     this.history.push({ x: this.x0, y: this.y0 });
+    this.startTime = Date.now();
+    this.endTime = 0;
   }
   addPosToHistory = (mouseX, mouseY) => {
     this.history.push({ x: mouseX, y: mouseY });

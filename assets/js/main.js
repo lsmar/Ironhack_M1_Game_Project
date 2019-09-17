@@ -4,6 +4,33 @@ let canDrawMouseMove = false;
 const draw = () => {
   gameAreaCoords = drawGameArea(ctx, canvas.width, canvas.height, true, gridSize);
 
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  // obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
+  obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
   obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
   obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
   obstacles.push(new Obstacles(ctx, gameAreaCoords, -1, -1));
@@ -43,7 +70,7 @@ start.draw();
 const redraw = () => {
   // console.log("Redraw called");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  gameAreaCoords = drawGameArea(ctx, canvas.width, canvas.height, true, gridSize);
+  gameAreaCoords = drawGameArea(ctx, canvas.width, canvas.height, false, gridSize);
   obstacles.forEach(obstacle => {
     obstacle.draw();
   });
