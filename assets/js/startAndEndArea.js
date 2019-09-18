@@ -6,7 +6,7 @@ class StartArea {
     this.wPos = wPos;
   }
   draw = () => {
-    this.ctx.fillStyle = "green";
+    this.ctx.fillStyle = "#278A45";
     for (let idxX = 0; idxX < 8; idxX += 1) {
       for (let idxY = 0; idxY < 8; idxY += 1) {
         if ((idxX % 2 == 1 && idxY % 2 == 0) || (idxX % 2 == 0 && idxY % 2 == 1)) {
@@ -37,7 +37,7 @@ class EndArea {
     }
   }
   draw = () => {
-    this.ctx.fillStyle = "black";
+    this.ctx.fillStyle = "#3c3c3c";
     for (let idxX = 0; idxX < 8; idxX += 1) {
       for (let idxY = 0; idxY < 8; idxY += 1) {
         if ((idxX % 2 == 1 && idxY % 2 == 0) || (idxX % 2 == 0 && idxY % 2 == 1)) {
