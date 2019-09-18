@@ -1,4 +1,4 @@
-//* Sizes units
+// //* Sizes units
 var wUnit = 0,
   hUnit = 0;
 
@@ -11,6 +11,15 @@ canvas.width = window.innerWidth;
 var gameControl = new GameControl(ctx, "Lucas", levelsPredefined);
 gameControl.cleanCanvas();
 gameControl.startLevel(0);
+//* Get start div
+const divStart = document.getElementById("startDiv");
+
+//* Get start button and set event click
+const stratBtn = document.getElementById("startBtn");
+stratBtn.addEventListener("click", e => {
+  divStart.classList.toggle("hide");
+  canvas.classList.toggle("hide");
+});
 
 //* Mouse click event
 canvas.addEventListener("mouseup", e => {

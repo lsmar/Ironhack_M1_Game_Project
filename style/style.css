@@ -1,7 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC|Oswald&display=swap");
 * {
   margin: 0;
   padding: 0;
+  font-family: "Amatic SC", cursive;
 }
 canvas {
   cursor: url("../assets/images/Target-icon32x32.png") 16 16, auto;
+  z-index: 0;
+}
+.full {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #8cbbb2;
+  z-index: 100;
+}
+.full h1 {
+  color: #f86041;
+  font-size: 8em;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.full button {
+  font-family: "Oswald", sans-serif;
+  font-size: 4em;
+  color: #3d5e61;
+  border: 3px solid #3d5e61;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin: 0;
+  line-height: 2em;
+}
+.full img {
+  width: 450px;
+}
+
+.hide {
+  display: none;
 }
