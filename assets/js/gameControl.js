@@ -26,6 +26,7 @@ class GameControl {
       //* Game end complete all levels
       return;
     }
+    this.currentLevel = level;
     this.levelInstance = new LevelControl(
       this.levels[level].levelDifficulty,
       this.levels[level].correctPath,
@@ -91,9 +92,8 @@ class GameControl {
       this.mouseInstance.drawLineHistory(this.gameAreaCoords);
       if (winCondition) {
         console.log("win this level");
-        //get Points
+        //* get Points
         const timeSpended = this.mouseInstance.levelCompleted();
-
         this.levelsHistory.push({
           level: this.currentLevel,
           completed: true,
@@ -108,6 +108,9 @@ class GameControl {
           (this.levelsHistory[this.currentLevel].points.difficulty + this.levelsHistory[this.currentLevel].points.time) *
           (this.levelsHistory[this.currentLevel].points.gridBonus / 100 + 1);
         console.log(this.levelsHistory);
+        console.log("Next Level");
+        this.cleanCanvas();
+        this.startLevel(this.currentLevel + 1);
       }
     }
   };

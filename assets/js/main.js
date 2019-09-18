@@ -10,7 +10,7 @@ canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 var gameControl = new GameControl(ctx, "Lucas", levelsPredefined);
 
-gameControl.startLevel(2);
+gameControl.startLevel(0);
 
 //* Mouse click event
 canvas.addEventListener("mouseup", e => {
