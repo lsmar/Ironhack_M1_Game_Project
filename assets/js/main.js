@@ -9,7 +9,7 @@ const ctx = canvas.getContext("2d");
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 var gameControl = new GameControl(ctx, "Lucas", levelsPredefined);
-
+gameControl.cleanCanvas();
 gameControl.startLevel(0);
 
 //* Mouse click event

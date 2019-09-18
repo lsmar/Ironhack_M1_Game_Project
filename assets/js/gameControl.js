@@ -59,6 +59,8 @@ class GameControl {
   };
   cleanCanvas = () => {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    this.ctx.fillStyle = "#8CBBB2";
+    this.ctx.fillRect(0, 0, canvas.width, canvas.height);
   };
   drawObstacles = obstacles => {
     obstacles.forEach(obstacle => obstacle.draw(this.ctx));

@@ -7,18 +7,18 @@ class Grid {
   }
   calcGameArea = () => {
     let hInit, wInit, wUnit, hUnit;
-    if (this.width * 0.67 > this.heigth * 0.94) {
+    if (this.width * 0.94 > this.heigth * 0.94) {
       //* the game area will be limited by heigth
       wUnit = (this.heigth * 0.94) / this.gridSize;
       hUnit = wUnit;
       hInit = this.heigth * 0.03;
-      wInit = (this.width * 0.7 - hUnit * this.gridSize) / 2 + this.width * 0.3;
+      wInit = (this.width * 0.94 - hUnit * this.gridSize) / 2 + this.width * 0.03;
     } else {
       //* the game area will be limited by width
-      wUnit = (this.width * 0.67) / this.gridSize;
+      wUnit = (this.width * 0.94) / this.gridSize;
       hUnit = wUnit;
       hInit = (this.heigth * 0.94 - hUnit * this.gridSize) / 2 + this.heigth * 0.03;
-      wInit = this.width * 0.3;
+      wInit = this.width * 0.03;
     }
     return {
       w0: wInit,
@@ -32,7 +32,7 @@ class Grid {
   };
   drawGameArea = (gameArea, gridOn) => {
     this.ctx.lineWidth = gameArea.wUnit / 20;
-    this.ctx.strokeStyle = "red";
+    this.ctx.strokeStyle = "#3D5E61";
     this.ctx.strokeRect(gameArea.w0, gameArea.h0, gameArea.wMax, gameArea.hMax);
     if (gridOn) {
       //* Vertical grid lines

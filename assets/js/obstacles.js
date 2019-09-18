@@ -14,7 +14,7 @@ class Obstacles {
     this.w0 = this.gameArea.w0 + this.gameArea.wUnit * this.wPos;
     this.h0 = this.gameArea.h0 + this.gameArea.hUnit * this.hPos;
     // this.context = context;
-    this.colors = ["#ff3400", "#ff0034", "#3400ff", "#220033", "#456633"];
+    this.colors = ["#33A9AC", "#FFA646", "#F86041", "#982062", "#343779"];
     this.color = this.randomColor(this.colors);
   }
   draw = context => {
