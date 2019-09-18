@@ -29,12 +29,48 @@
 
 <body>
   <canvas id="game" class="hide"></canvas>
-  <div id="startDiv" class="full">
+  <div id="startDiv" class="full hide">
     <img src="./assets/images/LogoGame.png" alt="logo memorize">
     <h1>Let's Play!</h1>
-    <button id="startBtn">Start</button>
+    <button id="startBtn" class="btn">Start</button>
   </div>
-
+  <div id="levelDiv" class="full">
+    <h1>Level 1</h1>
+    <div>
+      <h2 class="description">Next level description:</h2>
+      <div class="inline column">
+        <h4>Grid Size</h4>
+        <!-- <img id="gridImage" src="./assets/images/grid.png" alt="grid size"> -->
+        <h2>5 x 5</h2>
+      </div>
+      <div class="inline column">
+        <h4>Difficulty</h4>
+        <h2>Easy</h2>
+      </div>
+      <div class="inline column">
+        <h4>Time Bonus</h4>
+        <ul>
+          <li>
+            &lt 1,0s: 15 pts</li>
+          <li>
+            &lt 2,0s: 5 pts</li>
+        </ul>
+      </div>
+      <div class="inline column">
+        <h4>Grid</h4>
+        <ul>
+          <li>
+            On: -5%</li>
+          <li>
+            Off: +20%</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <button id="startGridOnBtn" class="btn on">Start With Grid</button>
+      <button id="startGridOffBtn" class="btn off">Start Without Grid</button>
+    </div>
+  </div>
 </body>
 <script src="./assets/js/levelsObjects.js"></script>
 <script src="./assets/js/obstacles.js"></script>
