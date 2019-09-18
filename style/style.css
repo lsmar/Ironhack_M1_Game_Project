@@ -3,6 +3,5 @@
   padding: 0;
 }
 canvas {
-  /* cursor: crosshair; */
   cursor: url("../assets/images/Target-icon32x32.png") 16 16, auto;
 }

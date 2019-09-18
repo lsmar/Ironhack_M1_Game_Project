@@ -28,6 +28,7 @@ canvas.addEventListener("mousemove", e => {
       gameControl.mouseMove(e);
     } else {
       //* Sorry you lost the game becouse you leave the game area
+      console.log("leave the game area");
     }
   }
 });

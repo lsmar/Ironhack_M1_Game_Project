@@ -31,4 +31,9 @@ class Obstacles {
 
   randomColor = colorArray => colorArray[Math.floor(Math.random() * colorArray.length)];
   randomIndex = len => Math.floor(Math.random() * len);
+  newGameArea = gameArea => {
+    this.gameArea = gameArea;
+    this.w0 = this.gameArea.w0 + this.gameArea.wUnit * this.wPos;
+    this.h0 = this.gameArea.h0 + this.gameArea.hUnit * this.hPos;
+  };
 }

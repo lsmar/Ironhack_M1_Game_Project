@@ -42,8 +42,10 @@ class GameControl {
     this.grid = new Grid(this.ctx, canvas.width, canvas.height, this.levelInstance.gridSize);
     this.gameAreaCoords = this.grid.calcGameArea(ctx, canvas.width, canvas.height, gridSize);
     //* Create and draw obstacles
-    if (!this.gameIsRunning) {
+    if (!this.gameIsRunning && this.levelInstance.obstacles.length === 0) {
       this.levelInstance.createObstacles(this.gameAreaCoords);
+    } else if (this.levelInstance.obstacles.length > 0) {
+      this.levelInstance.obstacles.forEach(obstacle => obstacle.newGameArea(this.gameAreaCoords));
     }
     this.drawObstacles(this.levelInstance.obstacles);
     //* Create the start and the end area
