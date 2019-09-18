@@ -27,6 +27,10 @@ class MouseHistory {
     this.ctx.stroke();
     this.ctx.closePath();
   };
+  levelCompleted = () => {
+    this.endTime = Date.now();
+    return this.endTime - this.startTime;
+  };
   drawLineHistory = gameArea => {
     for (let index = 1; index < this.history.length; index += 1) {
       this.drawLine(this.history[index - 1].x, this.history[index - 1].y, this.history[index].x, this.history[index].y, gameArea);

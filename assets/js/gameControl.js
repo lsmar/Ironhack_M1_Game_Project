@@ -18,7 +18,7 @@ class GameControl {
     this.mouseInstance;
     this.mouseOldX;
     this.mouseOldY;
-    this.drawGridMode = true;
+    this.drawGridMode = false;
   }
   //* startLevel need to recive the next level
   startLevel = level => {
@@ -57,9 +57,6 @@ class GameControl {
     this.grid.drawGameArea(this.gameAreaCoords, this.drawGridMode || !this.gameIsRunning);
   };
   cleanCanvas = () => {
-    if (!this.gameIsRunning) {
-      // this.levelInstance.obstacles = [];
-    }
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
   drawObstacles = obstacles => {
@@ -95,6 +92,22 @@ class GameControl {
       if (winCondition) {
         console.log("win this level");
         //get Points
+        const timeSpended = this.mouseInstance.levelCompleted();
+
+        this.levelsHistory.push({
+          level: this.currentLevel,
+          completed: true,
+          timeSpended: timeSpended,
+          points: {
+            difficulty: this.levelInstance.points.difficulty,
+            time: this.levelInstance.points.time.filter(item => item.time > timeSpended)[0].points,
+            gridBonus: this.drawGridMode ? this.levelInstance.points.gridOn : this.levelInstance.points.gridOff
+          }
+        });
+        this.levelsHistory[this.currentLevel].points.total =
+          (this.levelsHistory[this.currentLevel].points.difficulty + this.levelsHistory[this.currentLevel].points.time) *
+          (this.levelsHistory[this.currentLevel].points.gridBonus / 100 + 1);
+        console.log(this.levelsHistory);
       }
     }
   };

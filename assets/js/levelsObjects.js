@@ -8,7 +8,7 @@ const levelsPredefined = [
     amountOfObstacles: 10,
     points: {
       difficulty: 5,
-      time: [{ time: 1000, points: 15 }, { time: 2000, points: 5 }, { time: Infinity, points: 0 }],
+      time: [{ time: 2000, points: 15 }, { time: 3000, points: 5 }, { time: Infinity, points: 0 }],
       gridOn: -5,
       gridOff: 20
     }
