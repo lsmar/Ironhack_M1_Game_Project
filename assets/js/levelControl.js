@@ -4,8 +4,6 @@ class LevelControl {
     this.correctPath = correctPath;
     this.start = start;
     this.end = end;
-    // this.startInstance;
-    // this.endInstance = new StartArea();
     this.gridSize = gridSize;
     this.amountOfObstacles = amountOfObstacles;
     this.points = points;
@@ -26,7 +24,6 @@ class LevelControl {
       result.push(freePosGrid.splice(getIndex, 1));
     }
     return result;
-    // console.log(this.obstaclesPositions);
   };
   createObstacles = gameArea => {
     this.obstaclesPositions.forEach(obstacle => {
@@ -35,14 +32,3 @@ class LevelControl {
   };
   randomIndex = len => Math.floor(Math.random() * len);
 }
-
-// var levelTest = new LevelControl(
-//   levelExample.levelDifficulty,
-//   levelExample.correctPath,
-//   levelExample.start,
-//   levelExample.end,
-//   levelExample.gridSize,
-//   levelExample.amountOfObstacles,
-//   levelExample.points
-// );
-// console.log(levelTest.obstaclesPositions);

@@ -1,18 +1,3 @@
-let gameAreaCoords = {};
-const obstacles = [];
-let canDrawMouseMove = false;
-
-//* Make canvas responsive
-//* Canvas element will get the full screen
-const resize = () => {
-  var w = window.innerWidth;
-  var h = window.innerHeight;
-  canvas.width = w;
-  canvas.height = h;
-  // draw();
-};
-window.addEventListener("resize", resize);
-
 //* Sizes units
 var wUnit = 0,
   hUnit = 0;
@@ -25,19 +10,36 @@ canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 var gameControl = new GameControl(ctx, "Lucas", levelsPredefined);
 
-gameControl.startLevel(0);
-const end = new EndArea(ctx, gameAreaCoords, 3);
-end.draw();
-const start = new StartArea(ctx, gameAreaCoords, 3);
-start.draw();
+gameControl.startLevel(2);
 
-const redraw = () => {
-  // console.log("Redraw called");
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  gameAreaCoords = drawGameArea(ctx, canvas.width, canvas.height, false, gridSize);
-  obstacles.forEach(obstacle => {
-    obstacle.draw();
-  });
-  start.draw();
-  end.draw();
+//* Mouse click event
+canvas.addEventListener("mouseup", e => {
+  if (gameControl.start.isMouseHere(e.clientX, e.clientY)) {
+    gameControl.startMouse(e);
+  }
+});
+//* Mouse move event
+canvas.addEventListener("mousemove", e => {
+  //* call gameControl and pass de event
+  if (gameControl.gameIsRunning) {
+    //* Game is running check if moviment is in the game area
+    if (gameControl.insideGameArea(e)) {
+      console.log("Dentro da area de jogo");
+      gameControl.mouseMove(e);
+    } else {
+      //* Sorry you lost the game becouse you leave the game area
+    }
+  }
+});
+
+//* Make canvas responsive
+//* Canvas element will get the full screen
+const resize = () => {
+  var w = window.innerWidth;
+  var h = window.innerHeight;
+  canvas.width = w;
+  canvas.height = h;
+  gameControl.cleanCanvas();
+  gameControl.draw();
 };
+window.addEventListener("resize", resize);

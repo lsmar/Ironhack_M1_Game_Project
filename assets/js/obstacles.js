@@ -28,6 +28,7 @@ class Obstacles {
   };
   mouseIsIn = (mouseX, mouseY) =>
     mouseX > this.w0 && mouseX < this.w0 + this.gameArea.wUnit && mouseY > this.h0 && mouseY < this.h0 + this.gameArea.hUnit;
+
   randomColor = colorArray => colorArray[Math.floor(Math.random() * colorArray.length)];
   randomIndex = len => Math.floor(Math.random() * len);
 }

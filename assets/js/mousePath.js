@@ -11,7 +11,7 @@ class MouseHistory {
   addPosToHistory = (mouseX, mouseY) => {
     this.history.push({ x: mouseX, y: mouseY });
   };
-  drawLine = (x1, y1, x2, y2) => {
+  drawLine = (x1, y1, x2, y2, gameAreaCoords) => {
     this.ctx.beginPath();
     // console.log(mouseMove.history);
     var grd = this.ctx.createLinearGradient(gameAreaCoords.w0, gameAreaCoords.h0, gameAreaCoords.w0 + gameAreaCoords.wMax, gameAreaCoords.h0);
@@ -27,9 +27,9 @@ class MouseHistory {
     this.ctx.stroke();
     this.ctx.closePath();
   };
-  drawLineHistory = () => {
+  drawLineHistory = gameArea => {
     for (let index = 1; index < this.history.length; index += 1) {
-      this.drawLine(this.history[index - 1].x, this.history[index - 1].y, this.history[index].x, this.history[index].y);
+      this.drawLine(this.history[index - 1].x, this.history[index - 1].y, this.history[index].x, this.history[index].y, gameArea);
     }
   };
 }
