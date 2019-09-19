@@ -1,7 +1,7 @@
 const levelsPredefined = [
   {
     levelDifficulty: "Easy",
-    gridSize: 666,
+    gridSize: 5,
     start: [0, 2],
     end: [4, 4],
     correctPath: [[0, 2], [0, 1], [1, 1], [1, 2], [1, 3], [1, 4], [2, 4], [3, 4], [4, 4]],

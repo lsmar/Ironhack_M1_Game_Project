@@ -8,18 +8,7 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
-var gameControl = new GameControl(ctx, "Lucas", levelsPredefined);
-gameControl.cleanCanvas();
-gameControl.startLevel(0);
-//* Get start div
-const divStart = document.getElementById("startDiv");
-
-//* Get start button and set event click
-const stratBtn = document.getElementById("startBtn");
-stratBtn.addEventListener("click", e => {
-  divStart.classList.toggle("hide");
-  canvas.classList.toggle("hide");
-});
+var gameControl = {};
 
 //* Mouse click event
 canvas.addEventListener("mouseup", e => {
@@ -33,11 +22,12 @@ canvas.addEventListener("mousemove", e => {
   if (gameControl.gameIsRunning) {
     //* Game is running check if moviment is in the game area
     if (gameControl.insideGameArea(e)) {
-      console.log("Dentro da area de jogo");
       gameControl.mouseMove(e);
     } else {
       //* Sorry you lost the game becouse you leave the game area
       console.log("leave the game area");
+      gameControl.gameIsRunning = false;
+      //TODO: call Fail
     }
   }
 });

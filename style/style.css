@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Delius+Unicase|Oswald&display=swap");
-/* @import url("https://fonts.googleapis.com/css?family=Delius+Unicase&display=swap"); */
+@import url("https://fonts.googleapis.com/css?family=Delius+Unicase|Amatic+SC|Oswald&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -106,7 +105,7 @@ h4 {
 ul {
   list-style-type: none;
   background-color: inherit;
-  text-shadow: 3px 0px #f7f7f7;
+  text-shadow: 3px 0px #698285;
 }
 li {
   font-family: "Oswald", sans-serif;

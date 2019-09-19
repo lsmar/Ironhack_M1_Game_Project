@@ -5,7 +5,7 @@ class GameControl {
     this.ctx = context;
     this.playerName = playerName;
     this.levels = levels; //* Get from file
-    this.currentLevel = 0;
+    this.currentLevel = -1;
     this.totalTime = 0;
     this.totalPoints = 0;
     this.start;
@@ -106,13 +106,20 @@ class GameControl {
             gridBonus: this.drawGridMode ? this.levelInstance.points.gridOn : this.levelInstance.points.gridOff
           }
         });
-        this.levelsHistory[this.currentLevel].points.total =
+        this.levelsHistory[this.currentLevel].points.total = Math.ceil(
           (this.levelsHistory[this.currentLevel].points.difficulty + this.levelsHistory[this.currentLevel].points.time) *
-          (this.levelsHistory[this.currentLevel].points.gridBonus / 100 + 1);
+            (this.levelsHistory[this.currentLevel].points.gridBonus / 100 + 1)
+        );
         console.log(this.levelsHistory);
         console.log("Next Level");
-        this.cleanCanvas();
-        this.startLevel(this.currentLevel + 1);
+        levelDoneEvent();
+        if (this.currentLevel + 1 < this.levels.length) {
+          this.cleanCanvas();
+          this.startLevel(this.currentLevel + 1);
+          canvas.classList.add("hide");
+        } else {
+          console.log("There is no more levels");
+        }
       }
     }
   };
