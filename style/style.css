@@ -5,13 +5,10 @@
   font-family: "Delius Unicase", cursive;
   background-color: #8cbbb2;
   text-align: center;
+  cursor: url("../assets/images/Target-icon32x32.png") 18 18, auto;
 }
 body {
   height: 100%;
-}
-canvas {
-  cursor: url("../assets/images/Target-icon32x32.png") 16 16, auto;
-  z-index: 0;
 }
 .full {
   display: flex;
@@ -20,6 +17,8 @@ canvas {
   align-items: center;
   height: 100vh;
   width: 100%;
+  opacity: 1;
+  transition: opacity 1.6s;
 }
 .full > div {
   display: flex;
@@ -119,6 +118,11 @@ li {
   margin-bottom: 30px;
   margin-top: 30px;
   letter-spacing: 10px;
+}
+.full.hide {
+  display: none;
+  opacity: 0;
+  transition: opacity 1.6s;
 }
 .hide {
   display: none;

@@ -23,7 +23,14 @@ const levelDoneScreen = {
   nextBtn: document.getElementById("nextLevelBtn")
 };
 //* Get final div and elements
-const finalDiv = document.getElementById("finalDiv");
+const finalScreen = {
+  div: document.getElementById("finalDiv"),
+  gameDone: document.getElementById("gameDone"),
+  gameDoneH2: document.getElementById("gameDoneH2"),
+  gameTimeSpend: document.getElementById("gameTimeSpend"),
+  totalGamePoints: document.getElementById("totalGamePoints"),
+  backToStart: document.getElementById("backToStart")
+};
 
 //* Start level div configuration
 //* Get start button and set event click
@@ -37,7 +44,7 @@ const newLevelEvent = e => {
   startDiv.classList.add("hide");
   levelDiv.classList.remove("hide");
   levelDoneScreen.div.classList.add("hide");
-  finalDiv.classList.add("hide");
+  finalScreen.div.classList.add("hide");
   // canvas.classList.add("hide");
   //* Set screen values
   levelScreen.gridSize.innerText = `${gameControl.levelInstance.gridSize} x ${gameControl.levelInstance.gridSize}`;
@@ -69,7 +76,7 @@ levelScreen.withGridBtn.addEventListener("click", e => {
   canvas.classList.remove("hide");
   levelDiv.classList.add("hide");
   levelDoneScreen.div.classList.add("hide");
-  finalDiv.classList.add("hide");
+  finalScreen.div.classList.add("hide");
   gameControl.drawGridMode = true;
   gameControl.draw();
 });
@@ -79,11 +86,30 @@ levelScreen.withoutGridBtn.addEventListener("click", e => {
   canvas.classList.remove("hide");
   levelDiv.classList.add("hide");
   levelDoneScreen.div.classList.add("hide");
-  finalDiv.classList.add("hide");
+  finalScreen.div.classList.add("hide");
   gameControl.drawGridMode = false;
   gameControl.draw();
 });
 //* End level div configuration
+//* Start game done div configuration
+const gameCompleted = win => {
+  //* End game
+  startDiv.classList.add("hide");
+  levelDiv.classList.add("hide");
+  levelDoneScreen.div.classList.add("hide");
+  finalScreen.div.classList.remove("hide");
+  canvas.classList.add("hide");
+  if (win) {
+    finalScreen.gameDone.innerText = "Very Good!";
+    finalScreen.gameDoneH2.innerText = "You finished all levels!";
+  } else {
+    finalScreen.gameDone.innerText = "Opsss!";
+    finalScreen.gameDoneH2.innerText = "Sorry but you fail.";
+  }
+  finalScreen.gameTimeSpend.innerText = `Total time playing: ${(
+    gameControl.levelsHistory.reduce((acc, level) => acc + level.timeSpended, 0) / 1000
+  ).toFixed(1)}s`;
+};
 
 //* Start level done div configuration
 //* Get start button and set event click
@@ -93,28 +119,35 @@ const levelDoneEvent = e => {
   startDiv.classList.add("hide");
   levelDiv.classList.add("hide");
   levelDoneScreen.div.classList.remove("hide");
-  finalDiv.classList.add("hide");
+  finalScreen.div.classList.add("hide");
   canvas.classList.add("hide");
   //* Set screen values
-  levelDoneScreen.difficultyPoints.innerText = `+${gameControl.levelsHistory[gameControl.currentLevel - 1].points.difficulty}`;
-  const timeBonus = gameControl.levelsHistory[gameControl.currentLevel - 1].points.time;
+
+  levelDoneScreen.difficultyPoints.innerText = `+${gameControl.levelsHistory[gameControl.currentLevel].points.difficulty}`;
+  const timeBonus = gameControl.levelsHistory[gameControl.currentLevel].points.time;
   levelDoneScreen.timePoints.innerText = `${timeBonus > 0 ? "+" : ""}${timeBonus}`;
   if (timeBonus === 0) {
     levelDoneScreen.timePoints.parentElement.classList.add("red");
   } else {
     levelDoneScreen.timePoints.parentElement.classList.remove("red");
   }
-  const gridBonus = gameControl.levelsHistory[gameControl.currentLevel - 1].points.gridBonus;
+  const gridBonus = gameControl.levelsHistory[gameControl.currentLevel].points.gridBonus;
   levelDoneScreen.gridPoints.innerText = `${gridBonus > 0 ? "+" : ""}${gridBonus}%`;
   if (gridBonus < 0) {
     levelDoneScreen.gridPoints.parentElement.classList.add("red");
   } else {
     levelDoneScreen.gridPoints.parentElement.classList.remove("red");
   }
-  levelDoneScreen.levelDoneH1.innerText = `Level ${gameControl.currentLevel} Done!`;
-  levelDoneScreen.totalLevelPoints.innerText = `+${gameControl.levelsHistory[gameControl.currentLevel - 1].points.total}`;
-  levelDoneScreen.levelTimeSpendH1.innerText = `Completed in: ${(gameControl.levelsHistory[gameControl.currentLevel - 1].timeSpended / 1000).toFixed(
+  levelDoneScreen.levelDoneH1.innerText = `Level ${gameControl.currentLevel + 1} Done!`;
+  levelDoneScreen.totalLevelPoints.innerText = `+${gameControl.levelsHistory[gameControl.currentLevel].points.total}`;
+  levelDoneScreen.levelTimeSpendH1.innerText = `Completed in: ${(gameControl.levelsHistory[gameControl.currentLevel].timeSpended / 1000).toFixed(
     1
   )}s`;
 };
-levelDoneScreen.nextBtn.addEventListener("click", newLevelEvent);
+levelDoneScreen.nextBtn.addEventListener("click", () => {
+  if (gameControl.currentLevel < gameControl.levels.length) {
+    newLevelEvent();
+  } else {
+    gameCompleted(true);
+  }
+});

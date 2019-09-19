@@ -118,12 +118,29 @@ class GameControl {
           this.startLevel(this.currentLevel + 1);
           canvas.classList.add("hide");
         } else {
+          this.currentLevel += 1;
           console.log("There is no more levels");
         }
+      } else {
+        console.log("there is an obstacle");
+        this.stopMouseFail();
+        gameCompleted(false);
       }
     }
   };
-
+  stopMouseFail = () => {
+    const timeSpended = this.mouseInstance.levelCompleted();
+    this.levelsHistory.push({
+      level: this.currentLevel,
+      completed: false,
+      timeSpended: timeSpended,
+      points: {
+        difficulty: 0,
+        time: 0,
+        gridBonus: 0
+      }
+    });
+  };
   insideGameArea = event =>
     event.clientX > this.gameAreaCoords.w0 &&
     event.clientY > this.gameAreaCoords.h0 &&
