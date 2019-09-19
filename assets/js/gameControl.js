@@ -93,7 +93,7 @@ class GameControl {
       this.draw();
       this.mouseInstance.drawLineHistory(this.gameAreaCoords);
       if (winCondition) {
-        console.log("win this level");
+        //* Level completed
         //* get Points
         const timeSpended = this.mouseInstance.levelCompleted();
         this.levelsHistory.push({
@@ -110,8 +110,7 @@ class GameControl {
           (this.levelsHistory[this.currentLevel].points.difficulty + this.levelsHistory[this.currentLevel].points.time) *
             (this.levelsHistory[this.currentLevel].points.gridBonus / 100 + 1)
         );
-        console.log(this.levelsHistory);
-        console.log("Next Level");
+        //* next level
         levelDoneEvent();
         if (this.currentLevel + 1 < this.levels.length) {
           this.cleanCanvas();
@@ -119,10 +118,10 @@ class GameControl {
           canvas.classList.add("hide");
         } else {
           this.currentLevel += 1;
-          console.log("There is no more levels");
+          //* no more levels
         }
       } else {
-        console.log("there is an obstacle");
+        //* Opsss obstacle
         this.stopMouseFail();
         gameCompleted(false);
       }
