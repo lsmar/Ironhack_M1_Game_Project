@@ -21,14 +21,15 @@ if (
 ) {
   //* touch click event
   canvas.addEventListener("touchstart", e => {
-    // debugger;
-    if (gameControl.start.isMouseHere(e.clientX, e.clientY)) {
+    if (gameControl.start.isMouseHere(e.targetTouches[0].clientX, e.targetTouches[0].clientY)) {
       gameControl.startMouse(e);
+      // debugger;
     }
   });
   //* touch move event
   canvas.addEventListener("touchmove", e => {
-    // debugger;
+    e.clientX = e.targetTouches[e.targetTouches.length - 1].clientX;
+    e.clientY = e.targetTouches[e.targetTouches.length - 1].clientY;
     //* call gameControl and pass de event
     if (gameControl.gameIsRunning) {
       //* Game is running check if moviment is in the game area
