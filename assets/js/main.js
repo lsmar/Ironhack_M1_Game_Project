@@ -21,6 +21,7 @@ if (
 ) {
   //* touch click event
   canvas.addEventListener("touchstart", e => {
+    e.stopPropagation();
     if (gameControl.start.isMouseHere(e.targetTouches[0].clientX, e.targetTouches[0].clientY)) {
       gameControl.startMouse(e);
       // debugger;
@@ -28,6 +29,7 @@ if (
   });
   //* touch move event
   canvas.addEventListener("touchmove", e => {
+    e.stopPropagation();
     e.clientX = e.targetTouches[e.targetTouches.length - 1].clientX;
     e.clientY = e.targetTouches[e.targetTouches.length - 1].clientY;
     //* call gameControl and pass de event
