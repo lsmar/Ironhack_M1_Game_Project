@@ -34,22 +34,21 @@
     <h1>Let's Play!</h1>
     <button id="startBtn" class="btn">Start</button>
   </div>
-  <div id="levelDiv" class="full">
-    <h1>Level 1</h1>
+  <div id="levelDiv" class="full hide">
+    <h1 id="levelNumber">Level 1</h1>
     <div>
       <h2 class="description">Next level description:</h2>
       <div class="inline column">
         <h4>Grid Size</h4>
-        <!-- <img id="gridImage" src="./assets/images/grid.png" alt="grid size"> -->
-        <h2>5 x 5</h2>
+        <h2 id="gridSizeBonus">5 x 5</h2>
       </div>
       <div class="inline column">
         <h4>Difficulty</h4>
-        <h2>Easy</h2>
+        <h2 id="levelDifficulty">Easy</h2>
       </div>
       <div class="inline column">
         <h4>Time Bonus</h4>
-        <ul>
+        <ul id="timeBonus">
           <li>
             &lt 1,0s: 15 pts</li>
           <li>
@@ -58,7 +57,7 @@
       </div>
       <div class="inline column">
         <h4>Grid</h4>
-        <ul>
+        <ul id="gridBonus">
           <li>
             On: -5%</li>
           <li>
@@ -70,6 +69,46 @@
       <button id="startGridOnBtn" class="btn on">Start With Grid</button>
       <button id="startGridOffBtn" class="btn off">Start Without Grid</button>
     </div>
+  </div>
+  <div id="levelDoneDiv" class="full hide">
+    <h1 id="levelDoneNumber">Level 1 Done!</h1>
+    <h2 id="levelTimeSpend" class="fontSmall">Complited in: 1,3s</h2>
+    <div>
+      <h2 class="description">Your points in this level:</h2>
+      <div class="inline column green">
+        <h4>Difficulty</h4>
+        <h2 id="difficultyPoints" class="">+20</h2>
+      </div>
+      <div class="inline column green">
+        <h4>Time Bonus</h4>
+        <h2 id="timePoints" class="noshadow">+20</h2>
+      </div>
+      <div class="inline column green">
+        <h4>Grid Bonus</h4>
+        <h2 id="gridPoints" class="noshadow">+20%</h2>
+      </div>
+      <div class="inline column green">
+        <h4>Total Points</h4>
+        <h2 id="totalLevelPoints" class="">+48</h2>
+      </div>
+    </div>
+    <div></div>
+
+    <button id="nextLevelBtn" class="btn off">Next Level</button>
+  </div>
+  <div id="final" class="full">
+    <h1 id="gameDone">Opsss!</h1>
+    <h2>Sorry but you fail.</h2>
+    <h2 id="gameTimeSpend" class="fontSmall">Total time playing: 130,3s</h2>
+    <div>
+      <div class="inline column red">
+        <h4>&nbsp&nbsp&nbsp&nbspTotal Points&nbsp&nbsp&nbsp&nbsp</h4>
+        <h2 id="totalGamePoints" class="">0</h2>
+      </div>
+    </div>
+    <div></div>
+
+    <button id="backToStart" class="btn off">Play Again</button>
   </div>
 </body>
 <script src="./assets/js/levelsObjects.js"></script>

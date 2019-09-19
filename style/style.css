@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Amatic+SC|Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Delius+Unicase|Oswald&display=swap");
+/* @import url("https://fonts.googleapis.com/css?family=Delius+Unicase&display=swap"); */
 * {
   margin: 0;
   padding: 0;
-  font-family: "Amatic SC", cursive;
+  font-family: "Delius Unicase", cursive;
   background-color: #8cbbb2;
+  text-align: center;
 }
 body {
   height: 100%;
@@ -29,13 +31,12 @@ canvas {
   /* width: 100vw; */
 }
 .full h1 {
-  color: #f86041;
+  color: #b4695a;
   font-size: 8em;
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
-  letter-spacing: 30px;
-  text-shadow: 5px 0px #f86041;
+  letter-spacing: 10px;
 }
 .btn {
   font-family: "Oswald", sans-serif;
@@ -60,12 +61,14 @@ h2 {
   font-family: "Oswald", sans-serif;
   font-size: 6em;
   color: #3d5e61;
-  text-shadow: 3px 0px #f7f7f7;
+  text-shadow: 3px 0px #698285;
+  background-color: inherit;
 }
 h4 {
   font-family: "Oswald", sans-serif;
   font-size: 3em;
   color: #3c3c3c;
+  background-color: inherit;
 }
 .inline {
   display: inline;
@@ -73,7 +76,7 @@ h4 {
 }
 .column {
   flex-direction: column;
-  justify-content: ;
+  justify-content: space-around;
   text-align: center;
   margin: 30px;
   padding: 20px;
@@ -102,16 +105,30 @@ h4 {
 }
 ul {
   list-style-type: none;
+  background-color: inherit;
+  text-shadow: 3px 0px #f7f7f7;
 }
 li {
   font-family: "Oswald", sans-serif;
   font-size: 3em;
   color: #3d5e61;
-  text-shadow: 3px 0px #f7f7f7;
+  text-shadow: inherit;
+  background-color: inherit;
 }
-
+.fontSmall {
+  font-size: 4em;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  letter-spacing: 10px;
+}
 .hide {
   display: none;
+}
+.green {
+  background-color: #72aa83;
+}
+.red {
+  background-color: #b18888;
 }
 
 @media (max-width: 1220px) {
