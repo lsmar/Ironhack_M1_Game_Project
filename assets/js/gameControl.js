@@ -137,7 +137,8 @@ class GameControl {
       points: {
         difficulty: 0,
         time: 0,
-        gridBonus: 0
+        gridBonus: 0,
+        total: 0
       }
     });
   };

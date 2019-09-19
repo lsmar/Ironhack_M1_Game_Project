@@ -109,7 +109,16 @@ const gameCompleted = win => {
   finalScreen.gameTimeSpend.innerText = `Total time playing: ${(
     gameControl.levelsHistory.reduce((acc, level) => acc + level.timeSpended, 0) / 1000
   ).toFixed(1)}s`;
+  finalScreen.totalGamePoints.innerText = gameControl.levelsHistory.reduce((acc, level) => acc + level.points.total, 0);
 };
+finalScreen.backToStart.addEventListener("click", () => {
+  gameControl = {};
+  startDiv.classList.remove("hide");
+  levelDiv.classList.add("hide");
+  levelDoneScreen.div.classList.add("hide");
+  finalScreen.div.classList.add("hide");
+  canvas.classList.add("hide");
+});
 
 //* Start level done div configuration
 //* Get start button and set event click
