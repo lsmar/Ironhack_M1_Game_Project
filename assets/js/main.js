@@ -18,36 +18,53 @@ if (
   navigator.userAgent.match(/iPod/i) ||
   navigator.userAgent.match(/BlackBerry/i) ||
   navigator.userAgent.match(/Windows Phone/i)
-)
-  alert("You're using Mobile Device!!");
-
-//* Mouse click event
-canvas.addEventListener("mouseup", e => {
-  if (gameControl.start.isMouseHere(e.clientX, e.clientY)) {
-    gameControl.startMouse(e);
-  }
-});
-//* Mouse click event
-canvas.addEventListener("touchstart", e => {
-  if (gameControl.start.isMouseHere(e.clientX, e.clientY)) {
-    gameControl.startMouse(e);
-  }
-});
-//* Mouse move event
-canvas.addEventListener("mousemove", e => {
-  //* call gameControl and pass de event
-  if (gameControl.gameIsRunning) {
-    //* Game is running check if moviment is in the game area
-    if (gameControl.insideGameArea(e)) {
-      gameControl.mouseMove(e);
-    } else {
-      //* Sorry you lost the game becouse you leave the game area
-      gameControl.gameIsRunning = false;
-      gameControl.stopMouseFail();
-      gameCompleted(false);
+) {
+  //* touch click event
+  canvas.addEventListener("touchstart", e => {
+    // debugger;
+    if (gameControl.start.isMouseHere(e.clientX, e.clientY)) {
+      gameControl.startMouse(e);
     }
-  }
-});
+  });
+  //* touch move event
+  canvas.addEventListener("touchmove", e => {
+    // debugger;
+    //* call gameControl and pass de event
+    if (gameControl.gameIsRunning) {
+      //* Game is running check if moviment is in the game area
+      if (gameControl.insideGameArea(e)) {
+        gameControl.mouseMove(e);
+      } else {
+        //* Sorry you lost the game becouse you leave the game area
+        gameControl.gameIsRunning = false;
+        gameControl.stopMouseFail();
+        gameCompleted(false);
+      }
+    }
+  });
+} else {
+  //* Mouse click event
+  canvas.addEventListener("mouseup", e => {
+    if (gameControl.start.isMouseHere(e.clientX, e.clientY)) {
+      gameControl.startMouse(e);
+    }
+  });
+  //* Mouse move event
+  canvas.addEventListener("mousemove", e => {
+    //* call gameControl and pass de event
+    if (gameControl.gameIsRunning) {
+      //* Game is running check if moviment is in the game area
+      if (gameControl.insideGameArea(e)) {
+        gameControl.mouseMove(e);
+      } else {
+        //* Sorry you lost the game becouse you leave the game area
+        gameControl.gameIsRunning = false;
+        gameControl.stopMouseFail();
+        gameCompleted(false);
+      }
+    }
+  });
+}
 
 //* Make canvas responsive
 //* Canvas element will get the full screen
