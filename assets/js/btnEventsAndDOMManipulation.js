@@ -35,6 +35,9 @@ const finalScreen = {
 //* Start level div configuration
 //* Get start button and set event click
 const newLevelEvent = e => {
+  btnAudio.pause();
+  btnAudio.currentTime = 0;
+  btnAudio.play();
   //* Start game instance and level instance
   if (!gameControl.currentLevel) {
     gameControl = new GameControl(ctx, "", levelsPredefined);
@@ -72,6 +75,9 @@ const newLevelEvent = e => {
 startScreen.startBtn.addEventListener("click", newLevelEvent);
 //* Set event click with grid on
 levelScreen.withGridBtn.addEventListener("click", e => {
+  btnAudio.pause();
+  btnAudio.currentTime = 0;
+  btnAudio.play();
   startDiv.classList.add("hide");
   canvas.classList.remove("hide");
   levelDiv.classList.add("hide");
@@ -82,6 +88,9 @@ levelScreen.withGridBtn.addEventListener("click", e => {
 });
 //* Set event click with grid off
 levelScreen.withoutGridBtn.addEventListener("click", e => {
+  btnAudio.pause();
+  btnAudio.currentTime = 0;
+  btnAudio.play();
   startDiv.classList.add("hide");
   canvas.classList.remove("hide");
   levelDiv.classList.add("hide");
@@ -93,6 +102,9 @@ levelScreen.withoutGridBtn.addEventListener("click", e => {
 //* End level div configuration
 //* Start game done div configuration
 const gameCompleted = win => {
+  btnAudio.pause();
+  btnAudio.currentTime = 0;
+  btnAudio.play();
   //* End game
   startDiv.classList.add("hide");
   levelDiv.classList.add("hide");
@@ -112,6 +124,9 @@ const gameCompleted = win => {
   finalScreen.totalGamePoints.innerText = gameControl.levelsHistory.reduce((acc, level) => acc + level.points.total, 0);
 };
 finalScreen.backToStart.addEventListener("click", () => {
+  btnAudio.pause();
+  btnAudio.currentTime = 0;
+  btnAudio.play();
   gameControl = {};
   startDiv.classList.remove("hide");
   levelDiv.classList.add("hide");
@@ -123,6 +138,9 @@ finalScreen.backToStart.addEventListener("click", () => {
 //* Start level done div configuration
 //* Get start button and set event click
 const levelDoneEvent = e => {
+  btnAudio.pause();
+  btnAudio.currentTime = 0;
+  btnAudio.play();
   //* Start game instance and level instance
   gameControl.cleanCanvas();
   startDiv.classList.add("hide");
@@ -154,6 +172,9 @@ const levelDoneEvent = e => {
   )}s`;
 };
 levelDoneScreen.nextBtn.addEventListener("click", () => {
+  btnAudio.pause();
+  btnAudio.currentTime = 0;
+  btnAudio.play();
   if (gameControl.currentLevel < gameControl.levels.length) {
     newLevelEvent();
   } else {

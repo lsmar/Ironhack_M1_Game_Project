@@ -2,6 +2,11 @@
 var wUnit = 0,
   hUnit = 0;
 
+const winAudio = new Audio("./assets/audio/good.mp3");
+const btnAudio = new Audio("./assets/audio/button.mp3");
+const failAudio = new Audio("./assets/audio/fail.mp3");
+const startAudio = new Audio("./assets/audio/go.mp3");
+
 //* Get canvas element
 let gridSize = 5;
 const canvas = document.getElementById("game");
@@ -24,7 +29,6 @@ if (
     e.stopPropagation();
     if (gameControl.start.isMouseHere(e.targetTouches[0].clientX, e.targetTouches[0].clientY)) {
       gameControl.startMouse(e);
-      // debugger;
     }
   });
   //* touch move event
@@ -41,6 +45,7 @@ if (
         //* Sorry you lost the game becouse you leave the game area
         gameControl.gameIsRunning = false;
         gameControl.stopMouseFail();
+        failAudio.play();
         gameCompleted(false);
       }
     }
@@ -63,6 +68,7 @@ if (
         //* Sorry you lost the game becouse you leave the game area
         gameControl.gameIsRunning = false;
         gameControl.stopMouseFail();
+        failAudio.play();
         gameCompleted(false);
       }
     }

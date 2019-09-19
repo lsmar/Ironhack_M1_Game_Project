@@ -75,6 +75,7 @@ class GameControl {
     });
     this.gameIsRunning = true;
     this.draw();
+    startAudio.play();
   };
   mouseMove = event => {
     this.mouseInstance.addPosToHistory(event.clientX, event.clientY);
@@ -110,6 +111,7 @@ class GameControl {
           (this.levelsHistory[this.currentLevel].points.difficulty + this.levelsHistory[this.currentLevel].points.time) *
             (this.levelsHistory[this.currentLevel].points.gridBonus / 100 + 1)
         );
+        winAudio.play();
         //* next level
         levelDoneEvent();
         if (this.currentLevel + 1 < this.levels.length) {
@@ -123,6 +125,7 @@ class GameControl {
       } else {
         //* Opsss obstacle
         this.stopMouseFail();
+        failAudio.play();
         gameCompleted(false);
       }
     }
