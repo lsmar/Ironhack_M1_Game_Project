@@ -12,8 +12,10 @@ Memorize is a spatial memory game designed to improve motor skills and memory. I
 * **Grid Bonus:** Is a percentage that is applyed in the final points of the level according to the grid option selected by the player.
 
 # Level Builder
-To facilitate the development of new levels, a leveling tool has been created using google spreadsheets. You can access it here.
+To facilitate the development of new levels, a leveling tool has been created using google spreadsheets. You can access it [here](https://docs.google.com/spreadsheets/d/1Xfvp44btVPaA8RMmJYG0vvtgJaXpu-JWN3nHUTYe5gA).
 
+## Leveling tool brief
+![Leveling tool tutorial](/images/readme/levelingTool.png)
 
 
 # Future Work (Dreaming...💭)
@@ -23,3 +25,4 @@ To facilitate the development of new levels, a leveling tool has been created us
 * Ranking for levels.
 * Background music option.
 * User option to include new levels.
+* Script to generate levels automatic.
