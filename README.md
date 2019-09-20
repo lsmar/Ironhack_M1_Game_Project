@@ -1,12 +1,12 @@
 # MEMORIZE!
 
-## Project for Ironhack module 1. By Lucas Martins
+## Project for Ironhack module 1. *By Lucas Martins*
 
 ### Made with :heart:, JS, HTML5 and CSS3
 
 # The idea
 
-Memorize is a spatial memory game designed to improve motor skills and memory. Inspired by people with alzheimer's disease and parkinson's disease. The idea is that these people can exercise the brain in a fun and casual way. This is just a project in the initial phase, any person who is interested, please contact me.
+Memorize is a spatial memory game designed to improve motor skills and memory. Inspired by people with alzheimer's disease and parkinson's disease. The idea is that these people can exercise the brain in a fun and casual way. This is just a project in the initial phase, any person who is interested, please contact me. Fill free to fork, contribute and improve the game.
 
 # Points system
 
@@ -22,11 +22,11 @@ To facilitate the development of new levels, a leveling tool has been created us
 
 ## Leveling tool brief
 
-![Leveling tool tutorial](/assets/images/readme/levelingTool.png)
+![Leveling tool tutorial](https://github.com/lsmar/Ironhack_M1_Game_Project/blob/master/assets/images/readme/LevelingTool.png)
 
 # The Original Code
 
-Please check the original code in the '/assets/jsOriginal' folder. The dist code was made with babel to gain compatibility with more browsers.
+Please check the original code in the [`/assets/jsOriginal`](https://github.com/lsmar/Ironhack_M1_Game_Project/tree/master/assets/jsOriginal) folder. The dist code was made with babel to gain compatibility with more browsers.
 
 # Future Work (Dreaming... 💭)
 
