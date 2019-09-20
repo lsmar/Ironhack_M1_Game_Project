@@ -10,6 +10,9 @@
 body {
   height: 100%;
 }
+canvas {
+  overscroll-behavior: none;
+}
 .full {
   display: flex;
   flex-direction: column;
