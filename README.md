@@ -12,3 +12,12 @@ Memorize is a spacial memory game, designed to improve motor skills, and memory.
 * **Grid Bonus:** Is a percentage that is applyed in the final points of the level according to the grid option selected by the player.
 
 # Level Builder
+
+
+# Future Work (Dreaming...💭)
+* Back-end to store levels and rank of players.
+* Mobile compatibility.
+* CSS efects to make the game more fluid.
+* Ranking for levels.
+* Background music option.
+* User option to include new levels.
