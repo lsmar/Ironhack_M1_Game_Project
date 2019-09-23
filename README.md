@@ -8,7 +8,7 @@
 
 Memorize is a spatial memory game designed to improve motor skills and memory. Inspired by people with alzheimer's disease and parkinson's disease. The idea is that these people can exercise the brain in a fun and casual way. This is just a project in the initial phase, any person who is interested, please contact me. Feel free to fork, contribute and improve the game.
 
-# 2. Who to play 🕹
+# 2. Who to play 🕹 [Click here to Play](http://ironhackgame.lucasmartins.eng.br)
 - Use your mouse to play!  :mouse2:
 - Check the level description an chose if you want to play the game with our without grid. 
 ![Level description](https://github.com/lsmar/Ironhack_M1_Game_Project/blob/master/assets/images/readme/LevelDescriptionSmall.png)
